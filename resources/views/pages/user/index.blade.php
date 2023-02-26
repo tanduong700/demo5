@@ -5,6 +5,11 @@
         {{ session('msg') }}
     </div>
 @endif
+
+<button type="button" class="btn btn-info">
+<a href="{{ url('/dashboard') }}" class="text-black-50">Dashboard</a>
+</button>
+
 <div class="container rounded mt-5 bg-white p-md-5">
     <div class="h2 font-weight-bold">Meetings</div>
     <div class="table-responsive">
