@@ -11,18 +11,10 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    private $user;
-
-    public function __construct(User $user, Role $roles)
-    {
-        $this->user = $user;
-
-    }
-    public function index(){
+         public function index(){
         $title = 'danh sách người dùng';
 
-        $users = DB::table('users')->get();
-
+        $users = User::all();
 
         return view('pages.user.index', compact('title','users'));
     }
@@ -42,24 +34,21 @@ class UserController extends Controller
             'email_verified_at'=> date('Y-m-d H:i:s'),
             'password' => 'required|min:8'
         ]);
-        $dateInsert = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'email_verified_at' => date('Y-m-d H:i:s')
-        ];
-        DB::table('users')->insert($dateInsert);
 
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->email_verified_at = date('Y-m-d H:i:s');
+        $user->save();
 
          return redirect()->route('user.index')->with('msg','tạo thành công');
-
-
     }
 
     public function edit($id){
         $title = 'Sửa người dùng';
 
-        $users = $this->user->findOrfail($id);
+        $users = User::findOrfail($id);
 
         return view('pages.user.edit', compact('title','users'));
     }
@@ -70,19 +59,20 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email,'.$id,
             'email_verified_at'=> date('Y-m-d H:i:s'),
         ]);
-        $dataUpdate = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'email_verified_at' => date('Y-m-d H:i:s')
-        ];
-        DB::table('users')->where('id',$id)->update($dataUpdate);
+
+        $updataUser = User::find($id);
+        $updataUser->name = $request->name;
+        $updataUser->email = $request->email;
+        $updataUser->email_verified_at = date('Y-m-d H:i:s');
+        $updataUser->save();
 
         return redirect()->route('user.index')->with('msg','update thành công');
 
     }
 
     public function delete($id){
-        DB::table('users')->where('id',$id)->delete();
+        $deleteUser = User::find($id);
+        $deleteUser->delete($id);
         return redirect()->route('user.index')->with('msg','delete thành công');
 
     }
