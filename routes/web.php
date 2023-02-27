@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -43,8 +45,23 @@ Route::middleware(['auth', 'verified'])->group(function () {
         route::get('/delete/{id}',[UserController::class, 'delete'])->name('delete');
     });
 
-
     // hiển thị danh sách role và các chức năng thêm, sửa, xóa
+    Route::prefix('/role')->name('role.')->group(function(){
+        Route::get('/',[RoleController::class, 'index'])->name('index');
+        Route::get('/create',[RoleController::class, 'create'])->name('create');
+        Route::post('/create',[RoleController::class, 'store'])->name('store');
+        Route::get('/edit/{id}',[RoleController::class, 'edit'])->name('edit');
+        Route::post('/edit/{id}',[RoleController::class, 'update'])->name('update');
+        route::get('/delete/{id}',[RoleController::class, 'delete'])->name('delete');
+    });
 
     // hiển thị danh sách permission và các chức năng thêm, sửa, xóa
+    Route::prefix('/permission')->name('permission.')->group(function(){
+        Route::get('/',[PermissionController::class, 'index'])->name('index');
+        Route::get('/create',[PermissionController::class, 'create'])->name('create');
+        Route::post('/create',[PermissionController::class, 'store'])->name('store');
+        Route::get('/edit/{id}',[PermissionController::class, 'edit'])->name('edit');
+        Route::post('/edit/{id}',[PermissionController::class, 'update'])->name('update');
+        route::get('/delete/{id}',[PermissionController::class, 'delete'])->name('delete');
+    });
 });

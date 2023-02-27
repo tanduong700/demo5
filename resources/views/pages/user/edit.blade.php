@@ -5,10 +5,12 @@
     <div class="table-responsive">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-        <form action="" method="POST">
+
+        <form action="{{route('user.update',['id'=>$users->id])}}" method="POST">
+
             <div class="mb-3">
                 <label for="">Tên</label>
-                <input type="text" class="form-control" name="name" placeholder="tên người dùng ..." value="{{$users->name}}">
+                <input type="text" class="form-control" name="name" placeholder="tên người dùng ..."value="{{$users->name}}">
             </div>
 
             <div class="mb-3">

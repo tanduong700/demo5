@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
 
 class UserController extends Controller
 {
@@ -14,14 +14,14 @@ class UserController extends Controller
 
         $users = User::all();
 
-        return view('pages.user.index', compact('title','users'));
+        return view('pages.user.index', ['users' => $users, 'title' => $title]);
     }
 
     public function create(){
         // Return view create user
          $title = 'thêm người dùng';
 
-         return view('pages.user.create', compact('title'));
+         return view('pages.user.create', ['title'=>$title]);
     }
 
     public function store(Request $request){
@@ -29,7 +29,6 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'email_verified_at'=> date('Y-m-d H:i:s'),
             'password' => 'required|min:8'
         ]);
 
@@ -38,7 +37,6 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->email_verified_at = date('Y-m-d H:i:s');
         $user->save();
 
          return redirect()->route('user.index')->with('msg','tạo thành công');
@@ -50,7 +48,7 @@ class UserController extends Controller
 
         $users = User::findOrfail($id);
 
-        return view('pages.user.edit', compact('title','users',));
+        return view('pages.user.edit', ['users' => $users, 'title' => $title]);
     }
 
     public function update(Request $request,$id){
@@ -58,14 +56,13 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
-            'email_verified_at'=> date('Y-m-d H:i:s'),
+
         ]);
 
         // Update user
         $updataUser = User::find($id);
         $updataUser->name = $request->name;
         $updataUser->email = $request->email;
-        $updataUser->email_verified_at = date('Y-m-d H:i:s');
         $updataUser->save();
 
         return redirect()->route('user.index')->with('msg','update thành công');
