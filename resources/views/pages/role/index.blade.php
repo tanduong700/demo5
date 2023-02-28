@@ -37,7 +37,7 @@
                 </tr>
             </thead>
             <tbody>
-                @if (!empty($roles))
+
                  @forelse ( $roles as $key => $item)
                  <tr class="bg-blue">
                     <td class="pt-3">{{$key+1}}</td>
@@ -61,7 +61,7 @@
                     <td colspan="s">không có vai trò</td>
                 </tr>
                  @endforelse
-                @endif
+
             </tbody>
         </table>
     </div>

@@ -37,7 +37,7 @@
                 </tr>
             </thead>
             <tbody>
-                @if (!empty($permissions))
+
                  @forelse ( $permissions as $key => $item)
                  <tr class="bg-blue">
                     <td class="pt-3">{{$key+1}}</td>
@@ -61,7 +61,7 @@
                     <td colspan="s">không có quyền</td>
                 </tr>
                  @endforelse
-                @endif
+
             </tbody>
         </table>
     </div>

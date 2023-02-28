@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -64,4 +65,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/edit/{id}',[PermissionController::class, 'update'])->name('update');
         route::get('/delete/{id}',[PermissionController::class, 'delete'])->name('delete');
     });
+
+    Route::prefix('/role_permission')->name('role_permission.')->group(function(){
+        Route::get('/',[RolePermissionController::class, 'index'])->name('index');
+        //Route::get('/create',[RolePermissionController::class, 'create'])->name('create');
+        //Route::post('/create',[RolePermissionController::class, 'store'])->name('store');
+        Route::get('/edit/{id}',[RolePermissionController::class, 'edit'])->name('edit');
+        Route::post('/edit/{id}',[RolePermissionController::class, 'update'])->name('update');
+        //route::get('/delete/{id}',[RolePermissionController::class, 'delete'])->name('delete');
+    });
+
+
 });

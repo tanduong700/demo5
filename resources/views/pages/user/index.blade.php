@@ -11,11 +11,15 @@
 </button>
 @role('admin')
 <button type="button" class="btn btn-info">
-    <a href="{{ url('/role') }}" class="text-black-50">role</a>
+    <a href="{{ route('role.index') }}" class="text-black-50">role</a>
 </button>
 
 <button type="button" class="btn btn-info">
-    <a href="{{ url('/permission') }}" class="text-black-50">permission</a>
+    <a href="{{ route('permission.index') }}" class="text-black-50">permission</a>
+</button>
+
+<button type="button" class="btn btn-info">
+    <a href="{{ route('role_permission.index') }}" class="text-black-50">role & permission</a>
 </button>
 @endrole
 
@@ -39,11 +43,13 @@
                 </tr>
             </thead>
             <tbody>
-                @if (!empty($users))
+
                  @forelse ( $users as $key => $item)
                  <tr class="bg-blue">
                     <td class="pt-3">{{$key+1}}</td>
-                    <td class="pt-3">{{$item->name}}</td>
+                    <td class="pt-3">
+                        <a href="{{route('role_permission.edit',['id' => $item->id])}}" class="btn btn-link">{{$item->name}}</a>
+                    </td>
                     <td class="pt-3 mt-1">{{$item->email}}</td>
                     <td class="pt-3">{{$item->created_at}}</td>
                     <td class="pt-3">{{$item->updated_at}}</td>
@@ -63,7 +69,7 @@
                     <td colspan="s">không có người dùng</td>
                 </tr>
                  @endforelse
-                @endif
+
             </tbody>
         </table>
     </div>
