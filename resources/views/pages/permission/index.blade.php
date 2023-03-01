@@ -7,15 +7,15 @@
 @endif
 
 <button type="button" class="btn btn-info">
-<a href="{{ url('/dashboard') }}" class="text-black-50">Dashboard</a>
+<a href="{{ route('dashboard') }}" class="text-black-50">Dashboard</a>
 </button>
 
 <button type="button" class="btn btn-info">
-    <a href="{{ url('/user') }}" class="text-black-50">user</a>
+    <a href="{{ router('user.index') }}" class="text-black-50">user</a>
 </button>
 
 <button type="button" class="btn btn-info">
-        <a href="{{ url('/role') }}" class="text-black-50">role</a>
+        <a href="{{ route('role.index') }}" class="text-black-50">role</a>
 </button>
 
 <div class="container rounded mt-5 bg-white p-md-5">

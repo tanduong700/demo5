@@ -7,7 +7,7 @@
 @endif
 
 <button type="button" class="btn btn-info">
-<a href="{{ url('/dashboard') }}" class="text-black-50">Dashboard</a>
+<a href="{{ route('dashboard') }}" class="text-black-50">Dashboard</a>
 </button>
 @role('admin')
 <button type="button" class="btn btn-info">

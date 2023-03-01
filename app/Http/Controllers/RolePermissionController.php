@@ -12,32 +12,32 @@ class RolePermissionController extends Controller
 {
     public function index(){
         $title = 'vai trò và quyền của người dùng';
-        $users = User::all();
+        $user = User::all();
         $roles = Role::all();
         $permissions = Permission::all();
-        return view('pages.role_permission',['title' => $title,'roles'=>$roles,'users' => $users, 'permissions'=>$permissions]);
+        return view('pages.role_permission',['title' => $title,'roles'=>$roles,'users' => $user, 'permissions'=>$permissions]);
     }
 
     public function edit($id){
         $title = 'vai trò và quyền của người dùng';
-        $users = User::findOrfail($id);
+        $user = User::findOrfail($id);
         $roles = Role::all();
         $permissions = Permission::all();
-        $users -> hasRole('display_name');
         return view('pages.role_permission',['title' => $title,'roles'=>$roles,
-             'users' => $users, 'permissions'=>$permissions,]);
+             'users' => $user, 'permissions'=>$permissions,]);
     }
 
     public function update(Request $request,$id){
         $request->validate([
             'name' => 'required',
+            'roles' => 'required|array|min:1'
         ]);
         // update User
         $updataUser = User::find($id);
         $updataUser->name = $request->name;
         $updataUser->save();
         //update
-        $updataUser->attachRole($request->display_name);
+        $updataUser->syncRoles($request->roles);
         return redirect()->route('user.index')->with('msg','update thành công');
     }
 
