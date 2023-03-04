@@ -30,7 +30,8 @@ class RolePermissionController extends Controller
     public function update(Request $request,$id){
         $request->validate([
             'name' => 'required',
-            'roles' => 'required|array|min:1'
+            'roles' => 'required|array|min:1',
+            'permissions' => 'required|array|min:1'
         ]);
         // update User
         $updataUser = User::find($id);
@@ -38,6 +39,7 @@ class RolePermissionController extends Controller
         $updataUser->save();
         //update
         $updataUser->syncRoles($request->roles);
+        $updataUser->syncPermissions($request->permissions);
         return redirect()->route('user.index')->with('msg','update thành công');
     }
 

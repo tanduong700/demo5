@@ -21,33 +21,31 @@
                 <input type="text" class="form-control" name="name" placeholder="tên người dùng ..."value="{{$users->name}}">
             </div>
 
-           <div class="form-group">
-            <label>ROLE</label>
-            @forelse ($roles as $item)
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="roles[]"  value="{{$item->id}}," {{$users->hasRole($item->id)}} checked >
-                <label class="form-check-label" >{{$item->display_name}}</label>
+            <div class="form-group">
+                <label>Roles:</label>
+                @foreach ($roles as $role)
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="roles[]" value="{{ $role->id }}"
+                                {{ $users->hasRole($role->name) ? 'checked' : '' }}>
+                        <label class="form-check-label">{{ $role->display_name }}</label>
+                    </div>
+                @endforeach
             </div>
-            @empty
-                 <input class="form-check-input" type="checkbox" name="roles[]"  value="{{$role->id}}" {{$users->hasRole($item->id)}}   >
-                 <label class="form-check-label" >{{$item->display_name}}</label>
-            @endforelse
-            </div>
-         </select>
+
 
         <hr>
 
-         <div class="form-group">
-            <label for="">PERMISSIONS</label>
-            @forelse ( $permissions as $items)
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="permission" value="{{$items->id}}" >
-                <label class="form-check-label" for="flexCheckDefault">{{$items->name}}</label>
-            </div>
-            @empty
+        <div class="form-group">
+            <label>Permissions:</label>
+            @foreach ($permissions as $permission)
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="permissions[]" value="{{ $permission->id }}"
+                            {{ $users->hasPermission($permission->name) ? 'checked' : '' }}>
+                    <label class="form-check-label">{{ $permission->display_name }}</label>
+                </div>
+            @endforeach
+        </div>
 
-            @endforelse
-         </div>
 
          <button type="submit" class="btn btn-primary">chỉnh sửa</button>
          <a href="{{route('user.index')}}" class="btn btn-warning">Quay lại</a>

@@ -68,11 +68,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::prefix('/role_permission')->name('role_permission.')->group(function(){
         Route::get('/',[RolePermissionController::class, 'index'])->name('index');
-        //Route::get('/create',[RolePermissionController::class, 'create'])->name('create');
-        //Route::post('/create',[RolePermissionController::class, 'store'])->name('store');
         Route::get('/edit/{id}',[RolePermissionController::class, 'edit'])->name('edit');
         Route::post('/edit/{id}',[RolePermissionController::class, 'update'])->name('update');
-        //route::get('/delete/{id}',[RolePermissionController::class, 'delete'])->name('delete');
     });
 
 
