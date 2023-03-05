@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -14,14 +15,20 @@ class RolePermissionsChanged
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $users;
+    public $roles;
+    public $permissions;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(User $users, $roles, $permissions)
     {
-        //
+        $this->users = $users;
+        $this->roles = $roles;
+        $this->permissions = $permissions;
     }
 
     /**
