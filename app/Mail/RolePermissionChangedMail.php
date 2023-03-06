@@ -14,7 +14,7 @@ class RolePermissionChangedMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    private $users;
+    private $user;
     private $roles;
     private $permissions;
 
@@ -23,11 +23,10 @@ class RolePermissionChangedMail extends Mailable
      *
      * @return void
      */
-    public function __construct(User $users, $roles, $permissions)
+    public function __construct(User $user)
     {
-        $this->users = $users;
-        $this->roles = $roles;
-        $this->permissions = $permissions;
+        $this->user = $user;
+
     }
 
     /**
@@ -52,7 +51,7 @@ class RolePermissionChangedMail extends Mailable
         return new Content(
             markdown: 'emails.roles.permissions.changed',
             with: [
-                'user' => $this->users,
+                'user' => $this->user,
                 'roles' => $this->roles,
                 'permissions' => $this->permissions
             ]);
