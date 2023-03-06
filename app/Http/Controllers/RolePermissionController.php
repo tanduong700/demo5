@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\RolePermissionsChanged;
 use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
@@ -40,6 +41,7 @@ class RolePermissionController extends Controller
         //update
         $updataUser->syncRoles($request->roles);
         $updataUser->syncPermissions($request->permissions);
+        RolePermissionsChanged::dispatch($updataUser,$request->roles, $request->permissions);
         return redirect()->route('user.index')->with('msg','update thành công');
     }
 
