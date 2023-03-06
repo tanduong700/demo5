@@ -37,7 +37,7 @@ class RolePermissionChangedMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Role Permission Changed Mail',
+            subject: 'thông báo có quyền mới',
         );
     }
 
@@ -49,12 +49,13 @@ class RolePermissionChangedMail extends Mailable
     public function content()
     {
         return new Content(
-            markdown: 'emails.roles.permissions.changed',
+            view: 'emails.role_permission.changed',
             with: [
                 'user' => $this->user,
                 'roles' => $this->roles,
                 'permissions' => $this->permissions
-            ]);
+            ]
+        );
     }
 
     /**

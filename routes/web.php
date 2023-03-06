@@ -35,6 +35,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return view('welcome');
     });
     // tất cả các route mới bỏ vào đây
+    Route::get('/event', function(){
+         return view('emails.role_permission.changed');
+    });
 
     // hiển thị danh sách user và các chức năng thêm, sửa, xóa
     Route::prefix('/user')->name('user.')->group(function(){

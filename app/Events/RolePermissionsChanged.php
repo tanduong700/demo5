@@ -15,7 +15,7 @@ class RolePermissionsChanged
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $users;
+    public $user;
     public $roles;
     public $permissions;
 
@@ -24,9 +24,9 @@ class RolePermissionsChanged
      *
      * @return void
      */
-    public function __construct(User $users, $roles, $permissions)
+    public function __construct(User $user, $roles, $permissions)
     {
-        $this->users = $users;
+        $this->user = $user;
         $this->roles = $roles;
         $this->permissions = $permissions;
     }
