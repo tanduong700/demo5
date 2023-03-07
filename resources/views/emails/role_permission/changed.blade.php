@@ -10,12 +10,12 @@
     hello {{ $user->name }}
 
   vai trò của bạn:
-  @foreach ($roles as $role)
+  @foreach ($user->roles as $role)
       <td>{{$role->display_name}}</td>
   @endforeach
 
   quyền của bạn :
-  @foreach ($permissions as $permission)
+  @foreach ($user->permissions as $permission)
      <td>{{$permission->display_name}}</td>
   @endforeach
 </html>
