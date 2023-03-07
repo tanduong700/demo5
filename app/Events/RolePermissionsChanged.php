@@ -16,19 +16,17 @@ class RolePermissionsChanged
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $user;
-    public $roles;
-    public $permissions;
+
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(User $user, $roles, $permissions)
+    public function __construct(User $user)
     {
         $this->user = $user;
-        $this->roles = $roles;
-        $this->permissions = $permissions;
+
     }
 
     /**

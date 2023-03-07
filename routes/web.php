@@ -36,7 +36,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return view('welcome');
     });
     // tất cả các route mới bỏ vào đây
-    Route::get('/event',[EventController::class, 'sendMail'])->name('sendMail');
 
     // hiển thị danh sách user và các chức năng thêm, sửa, xóa
     Route::prefix('/user')->name('user.')->group(function(){

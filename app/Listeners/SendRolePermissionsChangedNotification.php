@@ -30,6 +30,6 @@ class SendRolePermissionsChangedNotification implements ShouldQueue
      */
     public function handle(RolePermissionsChanged $event)
     {
-        Mail::to($event->user->mail)->send(new RolePermissionChangedMail($event->user, $event->roles, $event->permissions));
+        Mail::to($event->user->mail)->send(new RolePermissionChangedMail($event->user));
     }
 }

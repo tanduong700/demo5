@@ -41,7 +41,7 @@ class RolePermissionController extends Controller
         //update
         $updataUser->syncRoles($request->roles);
         $updataUser->syncPermissions($request->permissions);
-        RolePermissionsChanged::dispatch($updataUser,$request->roles, $request->permissions);
+        RolePermissionsChanged::dispatch($updataUser);
         return redirect()->route('user.index')->with('msg','update thành công');
     }
 

@@ -15,8 +15,6 @@ class RolePermissionChangedMail extends Mailable
     use Queueable, SerializesModels;
 
     private $user;
-    private $roles;
-    private $permissions;
 
     /**
      * Create a new message instance.
@@ -51,9 +49,7 @@ class RolePermissionChangedMail extends Mailable
         return new Content(
             view: 'emails.role_permission.changed',
             with: [
-                'user' => $this->user,
-                'roles' => $this->roles,
-                'permissions' => $this->permissions
+                'user' => $this->user
             ]
         );
     }
