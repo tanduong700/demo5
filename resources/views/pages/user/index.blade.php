@@ -21,6 +21,10 @@
 <button type="button" class="btn btn-info">
     <a href="{{ route('role_permission.index') }}" class="text-black-50">role & permission</a>
 </button>
+
+<button type="button" class="btn btn-info">
+    <a href="{{ route('group.createUser') }}" class="text-black-50">Group</a>
+</button>
 @endrole
 
 <div class="container rounded mt-5 bg-white p-md-5">

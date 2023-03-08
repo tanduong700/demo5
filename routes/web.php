@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\ManagerGroupController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RolePermissionController;
@@ -36,6 +37,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return view('welcome');
     });
     // tất cả các route mới bỏ vào đây
+
 
     // hiển thị danh sách user và các chức năng thêm, sửa, xóa
     Route::prefix('/user')->name('user.')->group(function(){
@@ -73,5 +75,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/edit/{id}',[RolePermissionController::class, 'update'])->name('update');
     });
 
+    Route::prefix('/group')->name('group.')->group(function(){
+        Route::get('/',[ManagerGroupController::class, 'createUser'])->name('createUser');
+        Route::get('/create',[ManagerGroupController::class, 'create'])->name('create');
+        Route::post('/store',[ManagerGroupController::class, 'store'])->name('store');
+    });
 
 });

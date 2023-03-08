@@ -11,7 +11,7 @@
 </button>
 
 <button type="button" class="btn btn-info">
-    <a href="{{ router('user.index') }}" class="text-black-50">user</a>
+    <a href="{{ route('user.index') }}" class="text-black-50">user</a>
 </button>
 
 <button type="button" class="btn btn-info">
