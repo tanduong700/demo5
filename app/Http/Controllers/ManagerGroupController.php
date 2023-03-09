@@ -26,14 +26,12 @@ class ManagerGroupController extends Controller
             'users' => 'required|array'
         ]);
 
-        dd($request->name, $request->users);
-
         $groups = new Group;
         $groups->name = $request->name;
         $groups->save();
         $groups->users()->sync($request->users);
 
-        return redirect()->route('group.index');
+        return redirect()->route('group.createUser');
     }
 
     public function show($id){

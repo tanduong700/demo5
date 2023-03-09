@@ -1,6 +1,6 @@
 <h1>Create Group</h1>
 
-<form action="{{route('role.store')}}" method="POST">
+<form action="{{route('group.store')}}" method="POST">
     <div>
         <label for="name">Group Name:</label>
         <input type="text" id="name" name="name">
