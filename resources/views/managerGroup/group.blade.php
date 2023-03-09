@@ -5,29 +5,25 @@
     <div class="col-lg-12">
         <div class="card chat-app">
             <div id="plist" class="people-list">
+                @role('admin')
                 <a href="{{route('group.create')}}" class="btn btn-primary">Thêm</a>
+                @endrole
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-search"></i></span>
                     </div>
                     <input type="text" class="form-control" placeholder="Search...">
                 </div>
+                @foreach ($group as $group)
                 <ul class="list-unstyled chat-list mt-2 mb-0">
                     <li class="clearfix">
                         <div class="about">
-                            @foreach ($group as $group)
-
-                            <div>
-                                <tr>
-                                    <td>{{ $group->name }}</td>
-                                </tr>
-                            </div>
-                            <div class="status"> <i class="fa fa-circle offline"></i> khoảng 7p trước</div>
-
-                            @endforeach
+                            <div class="status"> <i class="fa fa-circle offline"></i> </div>
                         </div>
+                        {{ $group->name }}
                     </li>
                 </ul>
+                @endforeach
             </div>
             <div class="chat">
                 <div class="chat-header clearfix">
