@@ -13,15 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('messages', function (Blueprint $table) {
+        Schema::create('group_user', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('groud_id');
+            $table->unsignedBigInteger('group_id');
             $table->unsignedBigInteger('user_id');
-            $table->text('content');
             $table->timestamps();
 
-            $table->foreign('groud_id')->references('id')->on('group')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('user')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('messages');
+        Schema::dropIfExists('group_user');
     }
 };

@@ -79,6 +79,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/',[ManagerGroupController::class, 'createUser'])->name('createUser');
         Route::get('/create',[ManagerGroupController::class, 'create'])->name('create');
         Route::post('/store',[ManagerGroupController::class, 'store'])->name('store');
+        Route::get('/show/{id}', [ManagerGroupController::class, 'show'])->name('show');
     });
 
 });

@@ -9,12 +9,15 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-search"></i></span>
                     </div>
+                    <div>
+                    </div>
                     <input type="text" class="form-control" placeholder="Search...">
                 </div>
-                @foreach ($groups as $group)
+
+                @foreach ($groups->users as $user)
                 <ul class="list-unstyled chat-list mt-2 mb-0">
                     <li class="clearfix">
-                        <a href="{{ route('group.show', $group->id) }}">{{ $group->name }}</a>
+                        {{ $user->name}}
                         <div class="about">
                             <div class="status"> <i class="fa fa-circle offline"></i> </div>
                         </div>
@@ -23,9 +26,11 @@
                 </ul>
                 @endforeach
                   @role('admin')
-                <a href="{{ route('group.create') }}">Create New Group</a>
+                <a href="{{ route('group.create') }}">Create New User</a>
                   @endrole
             </div>
+
+
             <div class="chat">
                 <div class="chat-header clearfix">
                     <div class="row">

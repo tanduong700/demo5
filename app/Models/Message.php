@@ -12,12 +12,12 @@ class Message extends Model
 
     protected $fillable = ['group_id', 'user_id', 'content'];
 
-    public function group(): BelongsTo
+    public function groups(): BelongsTo
     {
         return $this->belongsTo(Group::class);
     }
 
-    public function User(): BelongsTo
+    public function users(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
