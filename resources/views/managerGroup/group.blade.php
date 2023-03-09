@@ -1,5 +1,5 @@
 <link href="/chatcss/chat.css" rel="stylesheet" />
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <div class="container">
 <div class="row clearfix">
     <div class="col-lg-12">
@@ -11,20 +11,22 @@
                     </div>
                     <input type="text" class="form-control" placeholder="Search...">
                 </div>
-                @foreach ($groups as $group)
+
                 <ul class="list-unstyled chat-list mt-2 mb-0">
-                    <li class="clearfix">
+                    @foreach ($groups as $group)
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
                         <a href="{{ route('group.show', $group->id) }}">{{ $group->name }}</a>
                         <div class="about">
                             <div class="status"> <i class="fa fa-circle offline"></i> </div>
                         </div>
 
                     </li>
+                    @endforeach
                 </ul>
-                @endforeach
                   @role('admin')
-                <a href="{{ route('group.create') }}">Create New Group</a>
+                <a href="{{ route('group.create') }}"  class="btn btn-primary mt-3">Create New Group</a>
                   @endrole
+
             </div>
             <div class="chat">
                 <div class="chat-header clearfix">

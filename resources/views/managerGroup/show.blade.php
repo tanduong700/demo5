@@ -1,5 +1,5 @@
 <link href="/chatcss/chat.css" rel="stylesheet" />
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <div class="container">
 <div class="row clearfix">
     <div class="col-lg-12">
@@ -26,7 +26,7 @@
                 </ul>
                 @endforeach
                   @role('admin')
-                <a href="{{ route('group.create') }}">Create New User</a>
+                <a href="{{ route('group.create') }}" class="btn btn-primary mt-3">Create New User</a>
                   @endrole
             </div>
 
