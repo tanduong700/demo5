@@ -32,7 +32,7 @@ class RoleController extends Controller
         ]);
 
         // Create role
-        $role = new Role;
+        $role = new Role();
         $role->name = $request->name;
         $role->display_name = $request->display_name;
         $role->save();

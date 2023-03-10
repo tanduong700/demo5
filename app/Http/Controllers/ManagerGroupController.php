@@ -26,7 +26,7 @@ class ManagerGroupController extends Controller
             'users' => 'required|array'
         ]);
 
-        $groups = new Group;
+        $groups = new Group();
         $groups->name = $request->name;
         $groups->save();
         $groups->users()->sync($request->users);
