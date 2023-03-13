@@ -44,7 +44,7 @@ class UserController extends Controller
 
     public function edit($id){
         // Return view update user
-        $title = 'Sửa người dùng';
+        $title = 'Cập nhập người dùng';
 
         $users = User::findOrfail($id);
 

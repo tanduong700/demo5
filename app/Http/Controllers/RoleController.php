@@ -42,7 +42,7 @@ class RoleController extends Controller
 
     public function edit($id){
         // Return view update role
-        $title = 'Sửa vai trò';
+        $title = 'Cập nhập vai trò';
 
         $roles = Role::findOrfail($id);
 

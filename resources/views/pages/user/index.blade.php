@@ -8,7 +8,6 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-<h1>{{$title}}</h1>
 
 @if (session('msg'))
     <div class="alert alert-success">
@@ -16,29 +15,9 @@
     </div>
 @endif
 
-<button type="button" class="btn btn-info">
-<a href="{{ route('dashboard') }}" class="text-black-50">Dashboard</a>
-</button>
-@role('admin')
-<button type="button" class="btn btn-info">
-    <a href="{{ route('role.index') }}" class="text-black-50">role</a>
-</button>
-
-<button type="button" class="btn btn-info">
-    <a href="{{ route('permission.index') }}" class="text-black-50">permission</a>
-</button>
-
-<button type="button" class="btn btn-info">
-    <a href="{{ route('role_permission.index') }}" class="text-black-50">role & permission</a>
-</button>
-
-<button type="button" class="btn btn-info">
-    <a href="{{ route('group.createUser') }}" class="text-black-50">Group</a>
-</button>
-@endrole
 
 <div class="container rounded mt-5 bg-white p-md-5">
-    <div class="h2 font-weight-bold">Meetings</div>
+    <div class="h2 font-weight-bold">{{$title}}</div>
     <div class="table-responsive">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <table class="table">
